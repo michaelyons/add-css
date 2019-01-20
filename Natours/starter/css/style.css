@@ -7,17 +7,21 @@ Dark green: #28b485
 
 */
 
-* {
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
-  font-size: 10px;
+  font-size: 62.5%;
+  /* font-size: 10px not good for accessibility, % better */
 }
 
 body {
+  box-sizing: border-box;
   color: #777;
   font-family: 'Lato', sans-serif;
   font-size: 1.6rem;
@@ -40,17 +44,17 @@ body {
   position: relative;
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
   top: 4rem;
   left: 4rem;
 }
 
-.logo {
+.header__logo {
   height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -59,29 +63,28 @@ body {
 }
 
 .heading-primary {
-  color: #fff;
-  text-transform: uppercase;
   backface-visibility: hidden;
+  color: #fff;
   margin-bottom: 6rem;
+  text-transform: uppercase;
 }
 
-.heading-primary-main {
+.heading-primary--main {
+  animation: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
   display: block;
   font-size: 6rem;
   font-weight: 400;
   letter-spacing: 3.5rem;
-
-  animation: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
+  animation: moveInRight 1s ease-out;
   display: block;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 1.75rem;
-  animation: moveInRight 1s ease-out;
 }
 
 @keyframes moveInLeft {
@@ -130,53 +133,53 @@ body {
 
 .btn:link,
 .btn:visited {
+  border-radius: 10rem;
+  display: inline-block;
+  padding: 1.5rem 4rem;
+  position: relative;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  border-radius: 10rem;
   transition: all 0.2s;
-  position: relative;
 }
 
 .btn:hover {
-  transform: translateY(-0.3rem);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.3rem);
 }
 
 .btn:active {
-  transform: translateY(-0.1rem);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.1rem);
 }
 
-.btn-white {
+.btn--white {
   background-color: #fff;
   color: #777;
 }
 
 .btn::after {
+  border-radius: 10rem;
   content: '';
   display: inline-block;
   height: 100%;
-  width: 100%;
-  border-radius: 10rem;
   position: absolute;
-  top: 0;
   left: 0;
-  z-index: -1;
+  top: 0;
   transition: all 0.4s;
+  width: 100%;
+  z-index: -1;
 }
 
-.btn-white::after {
+.btn--white::after {
   background-color: #fff;
 }
 
 .btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
+  transform: scaleX(1.4) scaleY(1.6);
 }
 
-.btn-animated {
+.btn--animated {
   animation: moveInBottom 0.5s ease-out 0.75s;
   animation-fill-mode: backwards;
 }
