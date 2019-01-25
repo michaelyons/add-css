@@ -68,13 +68,13 @@
 
   &:hover {
     background-color: $color-primary;
-    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    box-shadow: 0 1rem 2rem $card-box-shadow;
     color: $color-white;
     transform: translate(-2px);
   }
 
   &:active {
-    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+    box-shadow: 0 0.5rem 1rem $card-box-shadow;
     transform: translateY(0);
   }
 }
