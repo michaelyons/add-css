@@ -29,9 +29,9 @@
 *,
 *::after,
 *::before {
-  box-sizing: inherit;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  box-sizing: inherit; }
 
 html {
   font-size: 62.5%; }
@@ -52,36 +52,44 @@ body {
     body {
       padding: 0; } }
 
+::selection {
+  background-color: #55c57a;
+  color: #fff; }
+
 body {
-  color: #777;
   font-family: 'Lato', sans-serif;
-  font-size: 1.6rem;
   font-weight: 400;
-  line-height: 1.7; }
+  /*font-size: 16px;*/
+  line-height: 1.7;
+  color: #777; }
 
 .heading-primary {
-  backface-visibility: hidden;
   color: #fff;
-  margin-bottom: 6rem;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
   .heading-primary--main {
-    animation: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
     display: block;
     font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 3.5rem; }
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /*
+      animation-delay: 3s;
+      animation-iteration-count: 3;
+      */ }
     @media (max-width: 37.5em) {
       .heading-primary--main {
         letter-spacing: 1rem;
-        font-size: 5rem; } }
+        font-family: 5rem; } }
   .heading-primary--sub {
-    animation: moveInRight 1s ease-out;
     display: block;
     font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 1.75rem; }
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out; }
     @media (max-width: 37.5em) {
       .heading-primary--sub {
         letter-spacing: 0.5rem; } }
@@ -93,7 +101,6 @@ body {
   display: inline-block;
   background-image: linear-gradient(to right, #7ed56f, #28b485);
   -webkit-background-clip: text;
-  background-clip: text;
   color: transparent;
   letter-spacing: 0.2rem;
   transition: all 0.2s; }
@@ -552,17 +559,23 @@ body {
     filter: blur(3px) brightness(80%); }
 
 .header {
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
-  background-position: top;
+  height: 85vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero-small.jpg);
   background-size: cover;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  height: 95vh;
+  background-position: top;
   position: relative; }
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    .header {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      height: 95vh; } }
+  @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), only screen and (min-width: 125em) {
+    .header {
+      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg); } }
   @media (max-width: 37.5em) {
     .header {
-      clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
-      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); } }
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); } }
   .header__logo-box {
     position: absolute;
     top: 4rem;
@@ -617,7 +630,7 @@ body {
     width: calc( 3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
 
 .footer {
-  background-color: #333;
+  background-color: #999;
   padding: 10rem 0;
   font-size: 1.4rem;
   color: #f7f7f7; }
@@ -627,6 +640,9 @@ body {
   .footer__logo-box {
     text-align: center;
     margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .footer__logo-box {
+        margin-bottom: 6rem; } }
   .footer__logo {
     width: 15rem;
     height: auto; }
@@ -646,7 +662,7 @@ body {
       margin-right: 1.5rem; }
   .footer__link:link, .footer__link:visited {
     color: #f7f7f7;
-    background-color: #333;
+    background-color: #999;
     text-decoration: none;
     text-transform: uppercase;
     display: inline-block;
@@ -705,8 +721,8 @@ body {
       right: 4.5rem; } }
   @media (max-width: 37.5em) {
     .navigation__background {
-      top: 3rem;
-      right: 3rem; } }
+      top: 3.5rem;
+      right: 3.5rem; } }
 
 .navigation__nav {
   height: 100vh;
@@ -763,7 +779,7 @@ body {
   .navigation__icon, .navigation__icon::before, .navigation__icon::after {
     width: 3rem;
     height: 2px;
-    background-color: #333;
+    background-color: #999;
     display: inline-block; }
   .navigation__icon::before, .navigation__icon::after {
     content: '';
