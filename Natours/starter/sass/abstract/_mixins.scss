@@ -25,6 +25,10 @@
 
 // 1800 + big desktop
 
+//use ems here because best practice for accessibility
+
+//media query order: base + typography > general layout + grid > page layout > components
+
 @mixin respond($breakpoint) {
   @if $breakpoint == phone {
     @media (max-width: 37.5em) {
