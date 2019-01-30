@@ -4,7 +4,10 @@
   "description": "landing page",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass starter/sass/main.scss starter/css/style.css -w"
+    "watch:sass": "node-sass starter/sass/main.scss starter/css/style.css -w",
+    "compile:sass": "node-sass starter/sass/main.scss css/style.comp.css",
+    "concat:css": "concat -o css/style.concat.css css/style.comp.css starter/css/icon-font.css",
+    "prefix:css": ""
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,9 @@
   },
   "homepage": "https://github.com/michaelyons/add-css#readme",
   "devDependencies": {
-    "node-sass": "^4.11.0"
+    "autoprefixer": "^7.1.4",
+    "concat": "^1.0.3",
+    "node-sass": "^4.11.0",
+    "postcss-cli": "^4.1.1"
   }
 }
